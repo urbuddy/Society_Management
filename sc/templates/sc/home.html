@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% extends 'sc/base.html' %}
+    {% block homeactive %} active {% endblock homeactive %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block css %}
+       body {
+            color: white;
+            background: #63738a;
+            font-family: 'Roboto', sans-serif;
+            overflow: scroll;
+          }
+    h4 {
+        color: #63738a;
+        }
+    li {
+        color: black
+        }
+    p {
+        color: #63738a
+        }
+    .card-block {
+                    min-height: 220px;
+                }
+    .main-container{
+                        overflow:scroll;
+                        overflow-y:auto;
+                    }
+    .footer {
+                 position: fixed;
+                 left: 0;
+                 bottom: 0;
+                 width: 100%;
+                 background-color: 	#404040;
+                 color: white;
+                 text-align: center;
+              }
+    .grid-container {
+                      display: grid;
+                      grid-template-row: auto auto auto auto;
+                      background-color: #a3a9ad;
+                      padding: 10px;
+                    }
+    .grid-container2 {
+                      display: grid;
+                      grid-template-row: auto auto auto auto auto;
+                      background-color: #a3a9ad;
+                      padding: 5px;
+                    }
+    .card-body1 {
+                    overflow-x: scroll;
+                }
+    .card-body2 {
+                    overflow-y: scroll;
+                }
+    .grid-item {
+                      background-color: white;
+                      border: 1px solid rgba(0, 0, 0, 0.8);
+                      padding: 10px;
+                      font-size: 20px;
+                      text-align: center;
+                    }
+    {% endblock %}
+</head>
+{% block body %}
+<h1> </h1>
+{% if user.is_authenticated %}
+<br>
+<h1><strong><center> Notices </center></strong></h1>
+
+<div class="container">
+    {%for n in notices %}
+        <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card" style="width: 70rem;">
+
+                        <div class="card-body">
+                            <h4 class="card-title">{{n.title}}<br><small>by {{n.author}}</small></h4>
+                            <p class="card-text">{{n.content}}</p>
+                            <p class="card-text">Declared on: {{n.dateTime}}</p>
+                            <div class="media">
+                                <div class="media-body">
+                                    <h5 class="mt-0">
+                                        {% if user.is_authenticated %}
+                                        {% if user.id == post.author.id %}
+                                        <small><a href="/delete/" class="edit btn btn-warning mx-4">Delete</a></small>
+                                        {% endif %}
+                                        {% endif %}
+                                        </a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <br>
+    {% endfor %}
+</div>
+<h1><strong><center> Recent News </center></strong></h1><br>
+<center><div class="main-container " style="width: 80rem; height: 15rem;">
+<div class="container-fluid" >
+
+    <div class="row flex-row flex-nowrap">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> Elon Musk reacts with an emoji after Twitter CEO confirms he won’t join board. Musk will not be joining the board of directors of Twitter, the social media company's CEO announced late Sunday, less than a week after announcing Musk's appointment. Musk was named to the Twitter board of directors after purchasing a significant investment in the company and becoming its largest stakeholder.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> Uber India announces hike in cab prices due to rising fuel cost. Uber rides are set to be more expensive now. The cab services company is set to increase the fares by 12 per cent. As per the recent announcement the step has been taken in the light of increasing fuel prices. Earlier, the company had also announced a fare hike specifically for Mumbai owing to the same reason. The increased fares are supposed to cushion cab drivers from the impact of fuel price hikes.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> KGF 2: Yash fans create HUGE mosaic poster for actor with books! The size of the portrait is 130× 190 ft and is spread over 25650 sqft with books situated at the White Garden Grounds of Malur. This is being done by the Yash Fans Association of Mallur.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> Congress' Navjot Singh Sidhu makes political resurgence attempts in Punjab after poll debacle. Sidhu is still trying to hold the reins of the party even as he was asked by Congress president Sonia Gandhi to put down his papers following the embarrassing performance of the party. </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+            <ul>
+                <li>Filmmaker Ram Gopal Varma is known for speaking his mind. He never really minces his words and straight talks on what he feels is right. In an exclusive conversation with Zee News, RGV talked about the untimely death of actor Sushant Singh Rajput.</li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+            <ul>
+                <li>
+                    "WhatsApp is rolling out this feature to some beta testers. More activations are planned at a later date after installing a future update," the report said.
+
+"In the article about the WhatsApp beta for Android 2.22.3.5 update, we explained that WhatsApp is planning to introduce three new drawing tools: two new pencils and a blur tool," it added.
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> In the most recent phase of the Global NCAP (GNCAP) safety evaluation programme, the Toyota Urban Cruiser received a four-star rating for adult occupant protection by scoring 13.52 points on a possible 17 points.  When it comes to child safety, the Urban Cruiser scored 36.68 out of 49 possible points, a three-star rating. To be clear, the model examined here is a base model. Hyundai's Creta and new i20 were also tested in this round. </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> In the most recent phase of the Global NCAP (GNCAP) safety evaluation programme, the Toyota Urban Cruiser received a four-star rating for adult occupant protection by scoring 13.52 points on a possible 17 points.  When it comes to child safety, the Urban Cruiser scored 36.68 out of 49 possible points, a three-star rating. To be clear, the model examined here is a base model. Hyundai's Creta and new i20 were also tested in this round. </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> IPL is not just about cricket. It is about stories as well and not just the stories of cricketers, who work hard on the field but also stories of fans and those who make this sport much more beautiful. The fans, the supporters, the owners etc. Over the years, cameramen in IPL have spotted some magical moments off the field and we cannot thank them enough for their tireless jobs and still creating memories for the fans. </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</center><br>
+<h1><strong><center>Visitors</center></strong></h1>
+<center><div class="container mb-2" align="center">
+    <div class="row">
+
+        <div class="col-lg-4 my-4">
+            <div class="card shadow" style="width: 70rem; height: 15rem;">
+                <div class="card-body">
+                    <h4 class="card-title"><center><strong>Visitors</strong></center></h4>
+                       <ul style="list-style-type:none;"><centr>
+                        <li>Salman Khan</li>
+                        <li>Shahrukh Khan</li>
+                        <li>Varun Dhavan</li>
+                        <li>Shradhha Kapoor</li>
+                        <li>Akshay Kumar</li>
+                        <li>Amitab Bachhan</li>
+                    </centr></ul>
+
+                </div>
+              </div>
+        </div>
+    </div>
+</div></center>
+<h1><strong><center>Complaints or Suggestions</center></strong></h1>
+<div class="container">
+    {%for c in complaints %}
+        <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card" style="width: 70rem;">
+
+                        <div class="card-body">
+                            <h4 class="card-title">{{c.title}}<br><small>by {{c.author}}</small></h4>
+                            <p class="card-text">{{c.content}}</p>
+                            <p class="card-text">Reported on: {{c.dateTime}}</p>
+                            <div class="media">
+                                <div class="media-body">
+                                    <h5 class="mt-0">
+                                        {% if user.is_authenticated %}
+                                        {% if user.id == post.author.id %}
+                                        <small><a href="/edit/" class="edit btn btn-warning mx-4">Edit</a></small>
+                                        <small><a href="/delete/" class="Danger btn btn-warning mx-4">Delete</a></small>
+                                        {% endif %}
+                                        {% endif %}
+                                        </a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <br>
+    {% endfor %}
+</div>
+<h1><strong><center> Home & Other Services </center></strong></h1><br>
+<center><div class="container mb-2">
+    <div class="row">
+            <div style="width: 30rem; height: 15rem;">
+                <div class="grid-container">
+                  <div class="grid-item"><h4><a href="{% url 'home' %}"> AC Service</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Home Service</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Pest Control</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Groceries</a></h4></div>
+                </div>
+            </div>
+            <div style="width: 30rem; height: 15rem;">
+                <div class="grid-container2">
+                  <div class="grid-item"><h4><a href="{% url 'home' %}"> Residents List</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Emergency Numbers</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Daily Helps</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Documents</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Communications</a></h4></div>
+                </div>
+            </div>
+    </div>
+</div></center><br>
+<h1> </h1><br>
+<h1> </h1><br>
+
+
+<br>
+<h1><strong><center> Thank You </center></strong></h1>
+{% else %}
+<br>
+<h1><strong><center> Recent News </center></strong></h1>
+<center><div class="main-container " style="width: 80rem; height: 15rem;">
+<div class="container-fluid" >
+
+    <div class="row flex-row flex-nowrap">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> Elon Musk reacts with an emoji after Twitter CEO confirms he won’t join board. Musk will not be joining the board of directors of Twitter, the social media company's CEO announced late Sunday, less than a week after announcing Musk's appointment. Musk was named to the Twitter board of directors after purchasing a significant investment in the company and becoming its largest stakeholder.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> Uber India announces hike in cab prices due to rising fuel cost. Uber rides are set to be more expensive now. The cab services company is set to increase the fares by 12 per cent. As per the recent announcement the step has been taken in the light of increasing fuel prices. Earlier, the company had also announced a fare hike specifically for Mumbai owing to the same reason. The increased fares are supposed to cushion cab drivers from the impact of fuel price hikes.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> KGF 2: Yash fans create HUGE mosaic poster for actor with books! The size of the portrait is 130× 190 ft and is spread over 25650 sqft with books situated at the White Garden Grounds of Malur. This is being done by the Yash Fans Association of Mallur.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> Congress' Navjot Singh Sidhu makes political resurgence attempts in Punjab after poll debacle. Sidhu is still trying to hold the reins of the party even as he was asked by Congress president Sonia Gandhi to put down his papers following the embarrassing performance of the party. </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+            <ul>
+                <li>Filmmaker Ram Gopal Varma is known for speaking his mind. He never really minces his words and straight talks on what he feels is right. In an exclusive conversation with Zee News, RGV talked about the untimely death of actor Sushant Singh Rajput.</li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+            <ul>
+                <li>
+                    "WhatsApp is rolling out this feature to some beta testers. More activations are planned at a later date after installing a future update," the report said.
+
+"In the article about the WhatsApp beta for Android 2.22.3.5 update, we explained that WhatsApp is planning to introduce three new drawing tools: two new pencils and a blur tool," it added.
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> In the most recent phase of the Global NCAP (GNCAP) safety evaluation programme, the Toyota Urban Cruiser received a four-star rating for adult occupant protection by scoring 13.52 points on a possible 17 points.  When it comes to child safety, the Urban Cruiser scored 36.68 out of 49 possible points, a three-star rating. To be clear, the model examined here is a base model. Hyundai's Creta and new i20 were also tested in this round. </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> In the most recent phase of the Global NCAP (GNCAP) safety evaluation programme, the Toyota Urban Cruiser received a four-star rating for adult occupant protection by scoring 13.52 points on a possible 17 points.  When it comes to child safety, the Urban Cruiser scored 36.68 out of 49 possible points, a three-star rating. To be clear, the model examined here is a base model. Hyundai's Creta and new i20 were also tested in this round. </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card card-block" align="left">
+                <ul>
+                    <li> IPL is not just about cricket. It is about stories as well and not just the stories of cricketers, who work hard on the field but also stories of fans and those who make this sport much more beautiful. The fans, the supporters, the owners etc. Over the years, cameramen in IPL have spotted some magical moments off the field and we cannot thank them enough for their tireless jobs and still creating memories for the fans. </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</center>
+<br>
+<h1><strong><center>Society's Flats on Rent or Buy and other Facilities</center></strong></h1>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-lg-4 my-4">
+            <div class="card shadow" style="width: 20rem; height: 10rem;">
+                <div class="card-body">
+                    <h4 class="card-title"><center><strong>Rent</strong></center></h4>
+                    <ul>
+                        <li>1 BHK For 10,000&#8377</li>
+                        <li>2 BHK For 15,000&#8377</li>
+                        <li>3 BHK For 20,000&#8377</li>
+                    </ul>
+                </div>
+              </div>
+        </div>
+
+        <div class="col-lg-4 my-4">
+            <div class="card shadow" style="width: 20rem; height: 10rem;">
+                <div class="card-body">
+                  <h4 class="card-title"><center><strong> Buy </strong></center></h4>
+                    <ul>
+                        <li>1 BHK For 20,00,000&#8377</li>
+                        <li>2 BHK For 25,00,000&#8377</li>
+                        <li>3 BHK For 30,00,000&#8377</li>
+                    </ul>
+                </div>
+              </div>
+        </div>
+
+        <div class="col-lg-4 my-4">
+            <div class="card shadow" style="width: 20rem; height: 10rem;">
+                <div class="card-body">
+                    <h4 class="card-title"><center><strong> Facilities </strong></center></h4>
+                    <ul>
+                        <li>Swimming Pool</li>
+                        <li>Aerobics and Gym Center</li>
+                        <li>Creche & etc.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h1><strong><center> Home Services </center></strong></h1>
+<center><div class="container mb-2">
+    <div class="row">
+            <div style="width: 30rem; height: 15rem;">
+                <div class="grid-container">
+                  <div class="grid-item"><h4><a href="{% url 'home' %}"> AC Service</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Home Service</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Pest Control</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Groceries</a></h4></div>
+                </div>
+            </div>
+            <div style="width: 30rem; height: 15rem;">
+                <div class="grid-container2">
+                  <div class="grid-item"><h4><a href="{% url 'home' %}"> Residents List</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Emergency Numbers</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Daily Helps</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Documents</a></h4></div>
+                    <div class="grid-item"><h4><a href="{% url 'home' %}">Communications</a></h4></div>
+                </div>
+            </div>
+    </div>
+</div></center><br>
+<h1> </h1><br>
+<h1> </h1><br>
+<h1><strong><center> Thank You </center></strong></h1>
+
+{% endif %}
+<div class="footer">
+	<h2>Gokuldham Society</h2>
+  <h6>Powder Galli, Goregaon (East) in Mumbai.
+  <strong>Secretary:</strong> A.T. Bhide Mob.no.: 1234567890</h6>
+</div>
+{% endblock %}
+</html>

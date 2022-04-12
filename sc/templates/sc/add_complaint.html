@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% extends 'sc/base.html' %}
+    <title>Add Complaint</title>
+    {% block css %}
+    .edit{
+            float: right;
+        }
+    body {
+        color: #fff;
+        background: #63738a;
+        font-family: 'Roboto', sans-serif;
+      }
+{% endblock %}
+</head>
+{% block body %}
+    <form action="{% url 'add_complaint' %}" enctype="multipart/form-data" method="POST"> {% csrf_token %}
+        <div class="container mt-4">
+        {{ form.as_p }}
+        <button class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+{% endblock %}
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+< lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% extends 'sc/base.html' %}
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    {% block css %}
+       body {
+            color: white;
+            background: #63738a;
+            font-family: 'Roboto', sans-serif;
+            overflow: scroll;
+          }
+    h4 {
+        color: #63738a;
+        }
+    li {
+        color: black
+        }
+    p {
+        color: #f5f5f5
+        }
+    .footer {
+                 position: fixed;
+                 left: 0;
+                 bottom: 0;
+                 width: 100%;
+                 background-color: 	#404040;
+                 color: white;
+                 text-align: center;
+              }
+    .grid-container {
+                      display: grid;
+                      grid-template-columns: auto auto auto auto;
+                      background-color: #a3a9ad;
+                      padding: 5px;
+                    }
+    .grid-container2 {
+                      display: grid;
+                      grid-template-columns: auto auto auto auto auto;
+                      background-color: #a3a9ad;
+                      padding: 5px;
+                    }
+    .grid-item {
+                      background-color: white;
+                      border: 1px solid rgba(0, 0, 0, 0.8);
+                      padding: 10px;
+                      font-size: 20px;
+                      text-align: center;
+                    }
+    {% endblock %}
+</head>
+{% block body %}
+<h1><center><strong>{{user.get_full_name}}</strong></center></h1><br>
+<h2><center><strong>Verified User</strong></center></h2><br>
+<h3><div class="container profile">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="profile-tab">
+                    <div class="tab-pane">
+                        <br><br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><strong>First Name:</strong></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.first_name}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><strong>Last Name:</strong></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.last_name}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><strong>Email:</strong></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.email}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><strong>Mobile Number:</strong></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.mobile_no}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><strong>Flat Number:</strong></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.flat_no}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><strong>Tower Number:</strong></label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.tower_no}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div></h3></strong>
+{% endblock %}
+</html>
